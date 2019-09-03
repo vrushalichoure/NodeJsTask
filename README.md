@@ -7,6 +7,8 @@ Run `npm start` to start project.
 ## Build 
 Run `npm run build` to build project.
  
+## Redis Connection
+Establish Redis Connection ,Check service is start or stop
 
 ## Database Setup
 Edit database setup config in `user-verification/src/repository/database.js` file
