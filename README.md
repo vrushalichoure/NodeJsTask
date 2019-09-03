@@ -31,8 +31,8 @@ const pool = mysql.createConnection({
 Run `swagger project edit` to edit api docs.
 <br/>
 Note:
-if you want to see api documentation. copy swagger.yaml from `src/api/swagger.yaml` file. and paste in `editor.swagger.io` 
+if you want to see api documentation. copy swagger.yaml from `api/swagger.yaml` file. and paste in `editor.swagger.io` 
 <br/> 
 or
 <br/>
-you can copy swagger.json from `src/api/swagger.json` file. and paste in `editor.swagger.io`
+you can copy swagger.json from `api/swagger.json` file. and paste in `editor.swagger.io`
