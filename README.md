@@ -8,7 +8,7 @@ Run `npm start` to start project.
 Run `npm run build` to build project.
  
 
-## Database setup
+## Database Setup
 edit database setup config in repository/database.js file
 <br/>
 eg:
