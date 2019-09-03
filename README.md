@@ -1,5 +1,5 @@
 ## Install Dependencies
-install dependencies with  npm install
+install dependencies with  `npm install`
 
 ## Start Project
 Run `npm start` to start project.
