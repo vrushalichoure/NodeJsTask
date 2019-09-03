@@ -9,7 +9,7 @@ Run `npm run build` to build project.
  
 
 ## Database Setup
-Edit database setup config in `src/repository/database.js` file
+Edit database setup config in `user-verifcation/src/repository/database.js` file
 <br/>
 eg:
 <br/>
@@ -31,8 +31,8 @@ const pool = mysql.createConnection({
 Run `swagger project edit` to edit api docs.
 <br/>
 Note:
-if you want to see api documentation, copy swagger.yaml from `api/swagger/swagger.yaml` file and paste in `editor.swagger.io` 
+if you want to see api documentation, copy swagger.yaml from `user-verifcation/api/swagger/swagger.yaml` file and paste in `editor.swagger.io` 
 <br/> 
 or
 <br/>
-you can also copy swagger.json from `api/swagger/swagger.json` file and paste in `editor.swagger.io`
+you can also copy swagger.json from `user-verifcation/api/swagger/swagger.json` file and paste in `editor.swagger.io`
