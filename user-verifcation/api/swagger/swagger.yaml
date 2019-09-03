@@ -1,0 +1,205 @@
+---
+swagger: '2.0'
+info:
+  description: This is User Authentication API
+  version: 1.0.0
+  title: Swagger Authenctication API
+host: localhost:3000
+basePath: "/v1"
+schemes:
+- http
+paths:
+  "/login":
+    post:
+      tags:
+      - user
+      summary: Login
+      description: Login
+      operationId: getLogin
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/xml
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Generate JWT Token, Invite Token is mandatory for User Not Admin
+        required: true
+        schema:
+          "$ref": "#/definitions/Login"
+      responses:
+        '200':
+          description: JWT Token
+          schema:
+            "$ref": "#/definitions/LoginResponse"
+        '400':
+          description: Validation Error
+          schema:
+            "$ref": "#/definitions/ErrorResponse"
+        '401':
+          description: Invalid JWT Token
+          schema:
+            "$ref": "#/definitions/ErrorResponse"
+  "/inviteToken":
+    post:
+      tags:
+      - user
+      summary: To Store Token in Database
+      description: ''
+      operationId: getToken
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/xml
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Generate Invite Token and Store in
+        required: true
+        schema:
+          "$ref": "#/definitions/Tag"
+      responses:
+        '201':
+          description: Validation Error
+          schema:
+            "$ref": "#/definitions/InviteResponse"
+        '400':
+          description: Validation Error
+          schema:
+            "$ref": "#/definitions/ErrorResponse"
+        '401':
+          description: Invalid JWT Token
+          schema:
+            "$ref": "#/definitions/ErrorResponse"
+  "/getAllInviteToken":
+    get:
+      tags:
+      - user
+      summary: As a admin see all list of token
+      description: ''
+      operationId: getAllInviteToken
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/xml
+      - application/json
+      responses:
+        '200':
+          description: List of All Invite Token
+          schema:
+            "$ref": "#/definitions/GetAllTokenResponse"
+        '401':
+          description: Unauthorized Access
+          schema:
+            "$ref": "#/definitions/ErrorResponse"
+        '404':
+          description: No Record
+          schema:
+            "$ref": "#/definitions/ErrorResponse"
+definitions:
+  Tag:
+    type: object
+    required:
+    - InviteToken
+    - UserName
+    - Email
+    properties:
+      InviteToken:
+        type: string
+        description: unique InviteToken
+        example: 0AT3OFyu8Euy
+      UserName:
+        type: string
+        description: User Name
+        example: Alex Google
+      Email:
+        type: string
+        description: User Name
+        example: edd@yopmail.com
+    xml:
+      name: Tag
+  Login:
+    type: object
+    required:
+    - UserName
+    - EmailId
+    - UserRole
+    properties:
+      InviteToken:
+        type: string
+        description: unique InviteToken
+        example: 0AT3OFyu8Euy
+      UserName:
+        type: string
+        description: UserName
+        example: Alex
+      EmailId:
+        type: string
+        description: UserName
+        example: alex@yopmail.com
+      UserRole:
+        type: string
+        description: userRole
+        example: User
+    xml:
+      name: Login
+  ErrorResponse:
+    type: object
+    properties:
+      errorCode:
+        type: string
+        example: Error Message
+      message:
+        type: string
+        example: Failure
+    xml:
+      name: ErrorResponse
+  LoginResponse:
+    type: object
+    properties:
+      token:
+        type: string
+        description: unique InviteToken
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJbnZpdGVUb2tlbiI6Im51bGwiLCJVc2VyTmFtZSI6IkFkbWluIiwiUG
+      message:
+        type: string
+        description: message
+        example: sucess
+    xml:
+      name: LoginResponse
+  InviteResponse:
+    type: object
+    properties:
+      token:
+        type: string
+        example: HvBo4NT4TYwx
+      message:
+        type: string
+        example: Success
+    xml:
+      name: InviteResponse
+  GetAllTokenResponse:
+    type: object
+    properties:
+      token:
+        type: string
+        example: BRCoTVl77RoX
+      created_at:
+        type: string
+        example: '2019-08-28T18:30:00.000Z'
+      user_name:
+        type: string
+        example: Paul Walter
+      email_id:
+        type: string
+        example: paulwalter@yopmail.com
+      status:
+        type: string
+        example: active
+    xml:
+      name: GetAllTokenResponse
